@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Admin;
 use App\Auth;
+use App\Doctor;
 use App\Http\Requests\UserRequest;
 use App\Library\StringHelper;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -29,25 +33,76 @@ class AuthController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function login()
     {
         $data = $this->request->all();
-        $user = User::where(['email' => $data['email'], 'password' => $data['password']])->first();
+        $validator = Validator::make($data, [
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return $this->responseError($validator->errors()->first());
+        }
+        $user = User::where(['email' => $data['email'], 'password' => Hash::check('password', $data['password'])])->first();
+        if ($user) {
+            $token['token'] = StringHelper::randomUnique(64);
+            $token['user_id'] = $user['id'];
+            $token['delete_flg'] = 0;
+            $this->auth->insert($token);
+            $user['token'] = $token['token'];
+            return $this->responseSuccess($user);
+        } else {
+            return $this->responseError('User not found or not register yet') ;
+        }
+
+    }
+
+    public function loginAdmin()
+    {
+        $data = $this->request->all();
+        $validator = Validator::make($data, [
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return $this->responseError($validator->errors()->first());
+        }
+        $user = Admin::where(['username' => $data['username'], 'password' => Hash::check('password', $data['password'])])->first();
         if ($user) {
             $token['token'] = StringHelper::randomUnique(64);
             $token['user_id'] = $user->id;
             $token['delete_flg'] = 0;
             $this->auth->insert($token);
             $user['token'] = $token['token'];
-            return response()->json(['data' => $user,
-                'status' => Response::HTTP_OK]);
+            return $this->responseSuccess($user);
         } else {
-            return response()->json(['data' => $user,
-                'status' => Response::HTTP_FORBIDDEN]);
+            return $this->responseError('User not found or not register yet') ;
         }
+    }
 
+    public function loginDoctor()
+    {
+        $data = $this->request->all();
+        $validator = Validator::make($data, [
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return $this->responseError($validator->errors()->first());
+        }
+        $user = Doctor::where(['username' => $data['username'], 'password' => Hash::check('password', $data['password'])])->first();
+        if ($user) {
+            $token['token'] = StringHelper::randomUnique(64);
+            $token['user_id'] = $user->id;
+            $token['delete_flg'] = 0;
+            $this->auth->insert($token);
+            $user['token'] = $token['token'];
+            return $this->responseSuccess($user);
+        } else {
+            return $this->responseError('User not found or not register yet') ;
+        }
     }
 
     /**
@@ -67,4 +122,6 @@ class AuthController extends Controller
         }
         return response()->json(['status' => Response::HTTP_FORBIDDEN]);
     }
+
+
 }

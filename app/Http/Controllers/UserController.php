@@ -7,6 +7,7 @@ use App\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -52,11 +53,11 @@ class UserController extends Controller
                 'email' => 'required|email|max:127|unique:users,email',
                 'password' => 'required'
             ]);
-            if ($validator->fails()) {
-                return response()->json([
-                    'status' => 0,
-                    'error' => $validator->errors()], 401);
-            }
+//            if ($validator->fails()) {
+//                return response()->json([
+//                    'status' => 0,
+//                    'error' => $validator->errors()], 401);
+//            }
             if (!empty($data['file'])) {
                 $extension = $data['file']->getClientOriginalExtension(); // getting image extension
                 $filename = time() . '.' . $extension;
@@ -64,6 +65,7 @@ class UserController extends Controller
                 $data['picture'] = $filename;
                 unset($data['file']);
             }
+            $data['password'] = Hash::make($data['password']);
             $userId = $this->user->insertGetId($data);
             $user = $this->user->find($userId);
             return response()->json(['data' => $user,

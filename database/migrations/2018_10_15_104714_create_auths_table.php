@@ -16,6 +16,7 @@ class CreateAuthsTable extends Migration
         Schema::create('auths', function (Blueprint $table) {
             $table->increments('id');
             $table->string('token');
+            $table->integer('user_id');
             $table->integer('delete_flg');
             $table->timestamps();
         });

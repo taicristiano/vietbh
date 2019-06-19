@@ -18,8 +18,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('user', 'UserController');
+Route::resource('articles', 'ArticlesController')->middleware('auth:api');
+Route::resource('doctor', 'DoctorController');
 Route::resource('symptom', 'SymptomController');
 Route::resource('medicine', 'MedicineController');
+Route::resource('clinic', 'ClinicController');
+Route::resource('schedules', 'ScheduleController');
+Route::resource('message', 'MessageController');
+
 Route::post('user/{id}', 'UserController@update')->name('update');
 Route::post('login', 'Authcontroller@login')->name('login');
 Route::post('logout', 'Authcontroller@logout')->name('logout');
