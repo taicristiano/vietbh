@@ -13,5 +13,7 @@
 Route::post('user', 'UserController@add')->name('registerUser');
 Route::get('user', 'UserController@index')->name('getUser');
 Route::post('user/{id}', 'UserController@update')->name('update');
-Route::post('login', 'Authcontroller@login')->name('login');
-Route::post('logout', 'Authcontroller@logout')->name('logout');
+Route::get('admin/login', 'Admin\AuthController@getLoginAdmin')->name('getLogin');
+Route::post('admin/login', 'Admin\Authcontroller@loginAdmin')->name('postLogin');
+Route::post('admin/logout', 'Admin\Authcontroller@logout')->name('logout');
+Route::get('admin', 'Admin\Admincontroller@index')->name('admin.getIndex')->middleware('admin');

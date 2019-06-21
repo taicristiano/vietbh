@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Admin;
 use App\Auth;
 use App\Doctor;
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\AdminLoginRequest;
 use App\Library\StringHelper;
 use App\User;
 use Illuminate\Http\Request;
@@ -16,19 +16,6 @@ use Illuminate\Support\Facades\Validator;
 class AuthController extends Controller
 {
     protected $request;
-
-    /**
-     *
-     * @param Request $request
-     * @param User $user
-     * @param Auth $auth
-     */
-    public function __construct(Request $request,Auth $auth, User $user)
-    {
-        $this->request = $request;
-        $this->auth = $auth;
-        $this->user = $user;
-    }
 
     /**
      * Display a listing of the resource.
@@ -54,21 +41,26 @@ class AuthController extends Controller
             $user['token'] = $token['token'];
             return $this->responseSuccess($user);
         } else {
-            return $this->responseError('User not found or not register yet') ;
+            return $this->responseError('User not found or not register yet');
         }
 
     }
 
-    public function loginAdmin()
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getLoginAdmin()
     {
-        $data = $this->request->all();
-        $validator = Validator::make($data, [
-            'username' => 'required',
-            'password' => 'required',
-        ]);
-        if ($validator->fails()) {
-            return $this->responseError($validator->errors()->first());
-        }
+        return view('admin.blocks.login');
+    }
+
+    /**
+     * @param AdminLoginRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function loginAdmin(AdminLoginRequest $request)
+    {
+        $data = $request->all();
         $user = Admin::where(['username' => $data['username'], 'password' => Hash::check('password', $data['password'])])->first();
         if ($user) {
             $token['token'] = StringHelper::randomUnique(64);
@@ -76,12 +68,15 @@ class AuthController extends Controller
             $token['delete_flg'] = 0;
             $this->auth->insert($token);
             $user['token'] = $token['token'];
-            return $this->responseSuccess($user);
+            return redirect(route('admin.getIndex'));
         } else {
-            return $this->responseError('User not found or not register yet') ;
+            return back()->with('error', 'Tên đăng nhập hoặc mật khẩu không chính xác!');
         }
     }
 
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function loginDoctor()
     {
         $data = $this->request->all();
@@ -101,7 +96,7 @@ class AuthController extends Controller
             $user['token'] = $token['token'];
             return $this->responseSuccess($user);
         } else {
-            return $this->responseError('User not found or not register yet') ;
+            return $this->responseError('User not found or not register yet');
         }
     }
 

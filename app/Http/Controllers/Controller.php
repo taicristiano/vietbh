@@ -14,14 +14,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    protected $auth;
-    protected $user;
 
-    public function __construct(Auth $auth, User $user)
-    {
-        $this->auth = $auth;
-        $this->user = $user;
-    }
 
     /**
      * @param $token
