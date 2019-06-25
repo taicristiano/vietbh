@@ -38,7 +38,7 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.blocks.schedule.add');
     }
 
     /**
@@ -72,12 +72,12 @@ class ScheduleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Schedule  $schedule
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return void
      */
-    public function edit(Schedule $schedule)
+    public function edit($id)
     {
-        //
+        return view('admin.blocks.schedule.edit');
     }
 
     /**

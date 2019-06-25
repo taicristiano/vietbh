@@ -15,5 +15,14 @@ Route::get('user', 'UserController@index')->name('getUser');
 Route::post('user/{id}', 'UserController@update')->name('update');
 Route::get('admin/login', 'Admin\AuthController@getLoginAdmin')->name('getLogin');
 Route::post('admin/login', 'Admin\Authcontroller@loginAdmin')->name('postLogin');
-Route::post('admin/logout', 'Admin\Authcontroller@logout')->name('logout');
-Route::get('admin', 'Admin\Admincontroller@index')->name('admin.getIndex')->middleware('admin');
+
+Route::group(['prefix' => 'admin', 'middleware' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::get('/', 'Admincontroller@index')->name('admin.getIndex');
+    Route::post('logout', 'Authcontroller@logout')->name('logout');
+    Route::get('schedule', 'ScheduleController@home')->name('admin.getSchedule');
+    Route::get('schedule/add', 'ScheduleController@create')->name('admin.getAddSchedule');
+    Route::get('schedule/edit/{id}', 'ScheduleController@home')->name('admin.getEditSchedule');
+});
+
+Route::get('/', 'Indexcontroller@index')->name('index');
+//Route::get();
