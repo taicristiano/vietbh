@@ -24,7 +24,26 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        return view('admin.blocks.schedule.index');
+        try {
+            $scheduleData = $this->schedule->all();
+            $scheduleData = [
+                [
+                    'id' => 1,
+                    'title' => 'test lịch trình',
+                    'thumbnail' => '/images/schedule/1560399688.png',
+                    'content' => 1
+                ],
+                [
+                    'id' => 2,
+                    'title' => 'test lịch trình',
+                    'thumbnail' => '/images/schedule/1560399688.png',
+                    'content' => 1
+                ]
+            ];
+            return $this->responseSuccess($scheduleData);
+        } catch (Exception $exception) {
+            return response()->json($exception->getMessage());
+        }
     }
 
     /**

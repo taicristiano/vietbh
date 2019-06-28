@@ -23,7 +23,7 @@ Route::resource('doctor', 'DoctorController');
 Route::resource('symptom', 'SymptomController');
 Route::resource('medicine', 'MedicineController');
 Route::resource('clinic', 'ClinicController');
-Route::resource('schedules', 'ScheduleController');
+Route::resource('schedule', 'ScheduleController');
 Route::resource('message', 'MessageController');
 
 Route::post('user/{id}', 'UserController@update')->name('update');

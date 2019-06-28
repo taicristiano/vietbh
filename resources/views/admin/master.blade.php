@@ -20,7 +20,12 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{asset('dist/css/skins/_all-skins.min.css')}}">
     @yield('css')
-
+    <script type="text/javascript">
+        window.Laravel = {!! json_encode([
+                'baseUrl' => url('/'),
+                'csrfToken' => csrf_token(),
+            ]) !!};
+    </script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -33,29 +38,7 @@
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
-
-    @include('admin.commons.header')
-    <!-- Left side column. contains the logo and sidebar -->
-    @include('admin.commons.sidebar')
-
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
-                Dashboard
-                <small>Version 2.0</small>
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Dashboard</li>
-            </ol>
-        </section>
-        @yield('content')
-    </div>
-    <!-- /.content-wrapper -->
-    @include('admin.commons.footer')
+<div id="app"  class="wrapper">
 
 </div>
 <!-- ./wrapper -->
@@ -72,6 +55,8 @@
 <script src="{{ asset('dist/js/pages/dashboard2.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('dist/js/demo.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+
 @yield('javascript')
 </body>
 </html>
