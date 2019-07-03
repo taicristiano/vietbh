@@ -696,7 +696,7 @@ jQuery.extend( {
 				transport.send( requestHeaders, done );
 			} catch ( e ) {
 
-				// Rethrow post-completion exceptions
+				// Rethrow article-completion exceptions
 				if ( completed ) {
 					throw e;
 				}

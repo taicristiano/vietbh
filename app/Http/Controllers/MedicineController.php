@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class MedicineController extends Controller
 {
@@ -28,50 +29,68 @@ class MedicineController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        $user = $this->user->all();
-        return response()->json(['data' => $user,
-            'status' => Response::HTTP_OK]);
+        $user = Medicine::all();
+        return $this->responseSuccess($user);
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
         try {
             DB::beginTransaction();
-            $data = $this->request->all();
-            $validator = Validator::make($request->all(), [
-                'register_date' => 'date',
-            ]);
-            if ($validator->fails()) {
-                return response()->json([
-                    'status' => 0,
-                    'error' => $validator->errors()], 401);
+            $data = $request->all();
+            if (empty($data['id'])) {
+                $medicine = [
+                    'name' => $data['name'],
+                    'content' => $data['content'],
+                    'short_content' => $data['short_content'],
+                    'price' => $data['price'],
+                ];
+                $extension = $data['thumbnail']->getClientOriginalExtension(); // getting image extension
+                $filename = time() . '.' . $extension;
+                $imageResize = Image::make($data['thumbnail']->getRealPath());
+                $imageResize->resize(120, 180);
+                $imageResize->save(public_path('images/medicine/thumbnail/' . $filename));
+                $imageResize2 = Image::make($data['thumbnail']->getRealPath());
+                $imageResize2->save(public_path('images/medicine/' . $filename));
+                $medicine['thumbnail'] = $filename;
+                $medicineId = Medicine::insertGetId($medicine);
+                $medicineData = Medicine::where('id', $medicineId)->first();
+            } else {
+                $medicine = [
+                    'name' => $data['name'],
+                    'content' => $data['content'],
+                    'short_content' => $data['short_content'],
+                    'price' => $data['price']
+                ];
+                if (!empty($data['thumbnailUpdate'])) {
+                    $extension = $data['thumbnailUpdate']->getClientOriginalExtension(); // getting image extension
+                    $filename = time() . '.' . $extension;
+                    $imageResize = Image::make($data['thumbnailUpdate']->getRealPath());
+                    $imageResize->resize(120, 180);
+                    $imageResize->save(public_path('images/medicine/thumbnail/' . $filename));
+                    $imageResize2 = Image::make($data['thumbnailUpdate']->getRealPath());
+                    $imageResize2->save(public_path('images/medicine/' . $filename));
+                    $medicine['thumbnail'] = $filename;
+                }
+                Medicine::where('id', $data['id'])->update($medicine);
+                $medicineData = Medicine::where('id', $data['id'])->first();
             }
-            $symptom['name'] = !empty($data['name']) ? $data['name'] : null;
-            $symptom['start_number'] = !empty($data['start_number']) ? $data['start_number'] : 1;
-            $extension = $data['picture']->getClientOriginalExtension(); // getting image extension
-            $filename = time() . '.' . $extension;
-            $data['picture']->move('images/medicine/', $filename);
-            $symptom['picture_name'] = $filename;
-            $symptomId = $this->user->insertGetId($symptom);
-            $symptomData = $this->user->where('id', $symptomId)->first();
             DB::commit();
-            return response()->json(['data' => $symptomData,
-                'status' => 1]);
+            return $this->responseSuccess($medicineData);
         } catch (Exception $exception) {
             DB::rollBack();
-            return response()->json(['status' => 0, 'error' => $exception->getMessage()]);
+            return $this->responseError($exception->getMessage());
         }
-
     }
 
     /**
@@ -143,10 +162,8 @@ class MedicineController extends Controller
     public function show($id)
     {
         try {
-            $data = $this->request->all();
-            $this->checkToken($data['token']);
-            $symptomData = $this->user->where('id', $id)->with('symptomPictures')->first();
-            return response()->json(['status' => 1, 'data' => $symptomData]);
+            $symptomData = Medicine::where('id', $id)->first();
+            return $this->responseSuccess($symptomData);
         } catch (Exception $exception) {
             return response()->json(['status' => 0, 'error' => $exception->getMessage()]);
         }

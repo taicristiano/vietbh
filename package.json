@@ -28,6 +28,7 @@
     },
     "dependencies": {
         "history": "^4.9.0",
+        "react-ckeditor-component": "^1.1.0",
         "react-redux": "^7.1.0",
         "react-router-dom": "^4.3.1",
         "redux": "^4.0.1"

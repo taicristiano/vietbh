@@ -38,12 +38,7 @@
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<div id="app"  class="wrapper">
-
-</div>
-<!-- ./wrapper -->
-
-<!-- jQuery 3 -->
+{{--<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>--}}
 <script src="{{ asset('jquery/dist/jquery.min.js') }}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ asset('bootstrap/dist/js/bootstrap.min.js') }}"></script>
@@ -55,6 +50,9 @@
 <script src="{{ asset('dist/js/pages/dashboard2.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('dist/js/demo.js') }}"></script>
+<div id="app" class="wrapper">
+</div>
+
 <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 
 @yield('javascript')

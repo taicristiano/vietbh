@@ -15,17 +15,10 @@ Route::get('user', 'UserController@index')->name('getUser');
 Route::post('user/{id}', 'UserController@update')->name('update');
 Route::get('admin/login', 'Admin\AuthController@getLoginAdmin')->name('getLogin');
 Route::post('admin/login', 'Admin\Authcontroller@loginAdmin')->name('postLogin');
-//
-//Route::group(['prefix' => 'admin', 'middleware' => 'admin', 'namespace' => 'Admin'], function () {
-//    Route::get('/', 'Admincontroller@index')->name('admin.getIndex');
-//    Route::post('logout', 'Authcontroller@logout')->name('logout');
-//    Route::get('schedule', 'ScheduleController@index')->name('admin.getSchedule');
-//    Route::get('schedule/add', 'ScheduleController@create')->name('admin.getAddSchedule');
-//    Route::get('schedule/edit/{id}', 'ScheduleController@edit')->name('admin.getEditSchedule');
-//});
-//
-Route::get('/', 'Indexcontroller@index')->name('index');
-//Route::get();
 
-Route::view('/{any}', 'admin/master')
+Route::view('admin/{any}', 'admin/master')
     ->where('any', '.*');
+
+Route::view('{any}', 'frontend/master')
+    ->where('any', '^(?!admin$).*$');
+

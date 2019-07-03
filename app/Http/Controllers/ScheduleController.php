@@ -7,6 +7,7 @@ use App\ScheduleContent;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class ScheduleController extends Controller
@@ -56,29 +57,65 @@ class ScheduleController extends Controller
         try {
             DB::beginTransaction();
             $data = $request->all();
-            $schedule = [
-                'title' => $data['title'],
-                'short_content' => $data['short_content']
-            ];
-            $extension = $data['thumbnail']->getClientOriginalExtension(); // getting image extension
-            $filename = time() . '.' . $extension;
-            $imageResize = Image::make($data['thumbnail']->getRealPath());
-            $imageResize->resize(180, 240);
-            $imageResize->save(public_path('images/schedule/' . $filename));
-            $schedule['thumbnail'] = $filename;
-            $scheduleId = $this->schedule->insertGetId($schedule);
-            $scheduleContents = [];
-            foreach ($data['scheduleContent'] as $key => $scheduleContent) {
-                $scheduleContents[$key] = [
-                    'schedule_id' => $scheduleId,
-                    'content' => $scheduleContent,
-                    'order' => $key + 1,
-                    'created_at' => now(),
-                    'updated_at' => now()
+            if (empty($data['id'])) {
+                $schedule = [
+                    'title' => $data['title'],
+                    'short_content' => $data['short_content']
                 ];
+                $extension = $data['thumbnail']->getClientOriginalExtension(); // getting image extension
+                $filename = time() . '.' . $extension;
+                $imageResize = Image::make($data['thumbnail']->getRealPath());
+                $imageResize->resize(120, 120);
+                $imageResize->save(public_path('images/schedule/' . $filename));
+                $schedule['thumbnail'] = $filename;
+                $scheduleId = $this->schedule->insertGetId($schedule);
+                $scheduleContents = [];
+                foreach ($data['scheduleContent'] as $key => $scheduleContent) {
+                    $scheduleContents[$key] = [
+                        'schedule_id' => $scheduleId,
+                        'content' => $scheduleContent,
+                        'order' => $key + 1,
+                        'created_at' => now(),
+                        'updated_at' => now()
+                    ];
+                }
+                ScheduleContent::insert($scheduleContents);
+                $scheduleData = $this->schedule->where('id', $scheduleId)->first();
+            } else {
+                $schedule = [
+                    'title' => $data['title'],
+                    'short_content' => $data['short_content']
+                ];
+                if (!empty($data['thumbnailUpdate'])) {
+                    $extension = $data['thumbnailUpdate']->getClientOriginalExtension(); // getting image extension
+                    $filename = time() . '.' . $extension;
+                    $imageResize = Image::make($data['thumbnailUpdate']->getRealPath());
+                    $imageResize->resize(180, 240);
+                    $imageResize->save(public_path('images/schedule/' . $filename));
+                    $schedule['thumbnail'] = $filename;
+                    unset($data['thumbnail']);
+                }
+                if (!empty($data['scheduleContentUpdate'])) {
+                    foreach ($data['scheduleContentUpdate'] as $key => $scheduleContent) {
+                        ScheduleContent::where('id', $key)->update(['content' => $scheduleContent]);
+                    }
+                }
+                if (!empty($data['scheduleContentInsert'])) {
+                    $scheduleContents = [];
+                    foreach ($data['scheduleContentInsert'] as $key => $scheduleContent) {
+                        $scheduleContents[$key] = [
+                            'schedule_id' => $data['id'],
+                            'content' => $scheduleContent,
+                            'order' => $key,
+                            'created_at' => now(),
+                            'updated_at' => now()
+                        ];
+                    }
+                    ScheduleContent::insert($scheduleContents);
+                }
+                $this->schedule->where('id', $data['id'])->update($schedule);
+                $scheduleData = $this->schedule->where('id', $data['id'])->first();
             }
-            ScheduleContent::insert($scheduleContents);
-            $scheduleData = $this->schedule->where('id', $scheduleId)->first();
             DB::commit();
             return $this->responseSuccess($scheduleData);
         } catch (Exception $exception) {
@@ -97,7 +134,7 @@ class ScheduleController extends Controller
     public function show($id)
     {
         try {
-            $scheduleData = $this->schedule->find($id);
+            $scheduleData = Schedule::where('id', $id)->with('scheduleContents')->first();
             return $this->responseSuccess($scheduleData);
         } catch (Exception $exception) {
             return response()->json($exception->getMessage());
@@ -108,11 +145,16 @@ class ScheduleController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param $id
-     * @return void
+     * @return \Illuminate\Http\JsonResponse
      */
     public function edit($id)
     {
-        return view('admin.blocks.schedule.edit');
+        try {
+            $scheduleData = $this->schedule->find($id);
+            return $this->responseSuccess($scheduleData);
+        } catch (Exception $exception) {
+            return response()->json($exception->getMessage());
+        }
     }
 
     /**
@@ -124,7 +166,8 @@ class ScheduleController extends Controller
      */
     public function update(Request $request, Schedule $schedule)
     {
-        //
+        print_r($request->all());
+        die;
     }
 
     /**
@@ -135,6 +178,6 @@ class ScheduleController extends Controller
      */
     public function destroy(Schedule $schedule)
     {
-        //
+        dd(1);
     }
 }

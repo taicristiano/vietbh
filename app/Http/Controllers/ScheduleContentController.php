@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Schedule;
 use App\ScheduleContent;
+use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ScheduleContentController extends Controller
@@ -32,7 +34,7 @@ class ScheduleContentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -43,7 +45,7 @@ class ScheduleContentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\ScheduleContent  $scheduleContent
+     * @param \App\ScheduleContent $scheduleContent
      * @return \Illuminate\Http\Response
      */
     public function show(ScheduleContent $scheduleContent)
@@ -54,7 +56,7 @@ class ScheduleContentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\ScheduleContent  $scheduleContent
+     * @param \App\ScheduleContent $scheduleContent
      * @return \Illuminate\Http\Response
      */
     public function edit(ScheduleContent $scheduleContent)
@@ -65,8 +67,8 @@ class ScheduleContentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ScheduleContent  $scheduleContent
+     * @param \Illuminate\Http\Request $request
+     * @param \App\ScheduleContent $scheduleContent
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, ScheduleContent $scheduleContent)
@@ -77,11 +79,21 @@ class ScheduleContentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\ScheduleContent  $scheduleContent
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return JsonResponse
      */
-    public function destroy(ScheduleContent $scheduleContent)
+    public function destroy($id)
     {
-        //
+        try {
+            $scheduleData = [];
+            $scheduleContent = ScheduleContent::find($id);
+            if ($scheduleContent) {
+                ScheduleContent::destroy($id);
+                $scheduleData = Schedule::where('id', $scheduleContent['schedule_id'])->with('scheduleContents')->first();
+            }
+            return $this->responseSuccess($scheduleData);
+        } catch (Exception $exception) {
+            return $this->responseError($exception->getMessage());
+        }
     }
 }

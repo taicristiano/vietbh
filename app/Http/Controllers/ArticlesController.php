@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Articles;
+use App\Medicine;
+use http\Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
 
 
 class ArticlesController extends Controller
@@ -54,11 +58,51 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'register_date' => 'date|required',
-        ]);
-        if ($validator->fails()) {
-            return $this->responseError($validator->errors()->first());
+        try {
+            DB::beginTransaction();
+            $data = $request->all();
+            if (empty($data['id'])) {
+                $medicine = [
+                    'title' => $data['title'],
+                    'content' => $data['content'],
+                    'short_content' => $data['short_content']
+                ];
+                $extension = $data['thumbnail']->getClientOriginalExtension(); // getting image extension
+                $filename = time() . '.' . $extension;
+                $imageResize = Image::make($data['thumbnail']->getRealPath());
+                $imageResize->resize(180, 120);
+                $imageResize->save(public_path('images/article/thumbnail/' . $filename));
+                $imageResize2 = Image::make($data['thumbnail']->getRealPath());
+                $imageResize2->resize(400, 300);
+                $imageResize2->save(public_path('images/article/' . $filename));
+                $medicine['thumbnail'] = $filename;
+                $medicineId = Articles::insertGetId($medicine);
+                $medicineData = Articles::where('id', $medicineId)->first();
+            } else {
+                $medicine = [
+                    'title' => $data['title'],
+                    'content' => $data['content'],
+                    'short_content' => $data['short_content']
+                ];
+                if (!empty($data['thumbnailUpdate'])) {
+                    $extension = $data['thumbnailUpdate']->getClientOriginalExtension(); // getting image extension
+                    $filename = time() . '.' . $extension;
+                    $imageResize = Image::make($data['thumbnailUpdate']->getRealPath());
+                    $imageResize->resize(180, 120);
+                    $imageResize->save(public_path('images/article/thumbnail/' . $filename));
+                    $imageResize2 = Image::make($data['thumbnailUpdate']->getRealPath());
+                    $imageResize2->resize(400, 300);
+                    $imageResize2->save(public_path('images/article/' . $filename));
+                    $medicine['thumbnail'] = $filename;
+                }
+                Articles::where('id', $data['id'])->update($medicine);
+                $medicineData = Articles::where('id', $data['id'])->first();
+            }
+            DB::commit();
+            return $this->responseSuccess($medicineData);
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return $this->responseError($exception->getMessage());
         }
     }
 
