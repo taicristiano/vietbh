@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DoctorUser;
+use App\Medicine;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -10,11 +11,14 @@ class IndexController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        return view('frontend.master');
+        $data['suggest'] = Medicine::inRandomOrder()->limit(6)->get();
+        $data['dealHot'] = Medicine::inRandomOrder()->limit(6)->get();
+        $data['newItem'] = Medicine::limit(6)->orderBy('id', 'desc')->get();
+        return $this->responseSuccess($data);
     }
 
     /**

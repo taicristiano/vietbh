@@ -1,12 +1,6 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom'
 
-const schedulePath = '/admin/schedule';
-const medicinePath = '/admin/medicine';
-const postPath = '/admin/article';
-const userPath = '/admin/user';
-const clinicPath = '/admin/clinic';
-
 class Slider extends Component {
 
     checkActiveParentMenu = (path) => {
@@ -27,65 +21,35 @@ class Slider extends Component {
                         <div className="col-sm-12">
                             <div id="slider-carousel" className="carousel slide" data-ride="carousel">
                                 <ol className="carousel-indicators">
-                                    <li data-target="#slider-carousel" data-slide-to="0" className="active"></li>
-                                    <li data-target="#slider-carousel" data-slide-to="1"></li>
-                                    <li data-target="#slider-carousel" data-slide-to="2"></li>
+                                    <li data-target="#slider-carousel" data-slide-to="0" className="active"/>
+                                    <li data-target="#slider-carousel" data-slide-to="1"/>
+                                    <li data-target="#slider-carousel" data-slide-to="2"/>
                                 </ol>
 
-                                <div className="carousel-inner">
-                                    <div className="item active">
-                                        <div className="col-sm-6">
-                                            <h1><span>E</span>-SHOPPER</h1>
-                                            <h2>Free E-Commerce Template</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                tempor incididunt ut labore et dolore magna aliqua. </p>
-                                            <button type="button" className="btn btn-default get">Get it now</button>
-                                        </div>
-                                        <div className="col-sm-6">
-                                            <img src="frontend/images/home/girl1.jpg" className="girl img-responsive"
-                                                 alt=""/>
-                                            <img src="frontend/images/home/pricing.png" className="pricing" alt=""/>
-                                        </div>
+                                <div className="carousel-inner text-center">
+                                    <div className="item active text-center">
+                                        <img src={"frontend/images/home/9b5df8399dd7ab31ae84f28102cf6c76.png"}
+                                             className="girl img-responsive" alt=""/>
                                     </div>
-                                    <div className="item">
-                                        <div className="col-sm-6">
-                                            <h1><span>E</span>-SHOPPER</h1>
-                                            <h2>100% Responsive Design</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                tempor incididunt ut labore et dolore magna aliqua. </p>
-                                            <button type="button" className="btn btn-default get">Get it now</button>
-                                        </div>
-                                        <div className="col-sm-6">
-                                            <img src="frontend/images/home/girl2.jpg" className="girl img-responsive"
-                                                 alt=""/>
-                                            <img src="frontend/images/home/pricing.png" className="pricing" alt=""/>
-                                        </div>
+                                    <div className="item text-center">
+                                        <img src={"frontend/images/home/012ec12d6d2d27439d60e700247dcff8.png"}
+                                             className="girl img-responsive"
+                                             alt=""/>
                                     </div>
-
-                                    <div className="item">
-                                        <div className="col-sm-6">
-                                            <h1><span>E</span>-SHOPPER</h1>
-                                            <h2>Free Ecommerce Template</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                tempor incididunt ut labore et dolore magna aliqua. </p>
-                                            <button type="button" className="btn btn-default get">Get it now</button>
-                                        </div>
-                                        <div className="col-sm-6">
-                                            <img src="frontend/images/home/girl3.jpg" className="girl img-responsive"
-                                                 alt=""/>
-                                            <img src="frontend/images/home/pricing.png" className="pricing" alt=""/>
-                                        </div>
+                                    <div className="item text-center">
+                                        <img src={"frontend/images/home/6881372ff6c58e86ded1a5553f44076e.png"}
+                                             className="girl img-responsive text-center"
+                                             alt=""/>
                                     </div>
-
                                 </div>
 
                                 <a href="#slider-carousel" className="left control-carousel hidden-xs"
                                    data-slide="prev">
-                                    <i className="fa fa-angle-left"></i>
+                                    <i className="fa fa-angle-left"/>
                                 </a>
                                 <a href="#slider-carousel" className="right control-carousel hidden-xs"
                                    data-slide="next">
-                                    <i className="fa fa-angle-right"></i>
+                                    <i className="fa fa-angle-right"/>
                                 </a>
                             </div>
 

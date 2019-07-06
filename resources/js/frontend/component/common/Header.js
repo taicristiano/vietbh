@@ -1,6 +1,57 @@
 import React, {Component} from 'react';
+import {NavLink} from "react-router-dom";
+import axios from "axios";
+import HeaderList from "./HeaderList";
+
+const indexPath = '/index.html';
 
 class Header extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    };
+
+    checkActiveParentMenu = (path) => {
+        let pathActive = window.location.pathname;
+        return (pathActive.indexOf(path) !== -1) ? "active menu-open" : "";
+    };
+
+    componentDidMount() {
+        axios.get(window.Laravel.baseUrl + '/api/category')
+            .then(response => {
+                if (response.data.status === 1) {
+                    this.setState(response.data.data)
+                }
+            })
+            .catch(function (error) {
+                console.log(error)
+            });
+    }
+
+    makeCategoryList() {
+        if (this.state.category1 instanceof Array) {
+            return this.state.category1.map((object, i) => {
+                return <HeaderList obj={object} key={i} index={i}/>
+            })
+        }
+    }
+
+    makeCategoryList2() {
+        if (this.state.category2 instanceof Array) {
+            return this.state.category2.map((object, i) => {
+                return <HeaderList obj={object} key={i} index={i}/>
+            })
+        }
+    }
+
+    makeCategoryList3() {
+        if (this.state.category3 instanceof Array) {
+            return this.state.category3.map((object, i) => {
+                return <HeaderList obj={object} key={i} index={i}/>
+            })
+        }
+    }
+
     render() {
         return (
             <header id="header">
@@ -18,54 +69,6 @@ class Header extends Component {
                             <div className="col-sm-6">
                                 <div className="social-icons pull-right">
                                     <ul className="nav navbar-nav">
-                                        <li><a href="#"><i className="fa fa-facebook"/></a></li>
-                                        <li><a href="#"><i className="fa fa-twitter"/></a></li>
-                                        <li><a href="#"><i className="fa fa-linkedin"/></a></li>
-                                        <li><a href="#"><i className="fa fa-dribbble"/></a></li>
-                                        <li><a href="#"><i className="fa fa-google-plus"/></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="header-middle">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-sm-4">
-                                <div className="logo pull-left">
-                                    <a href="index.html"><img src="frontend/images/home/logo.png" alt=""/></a>
-                                </div>
-                                <div className="btn-group pull-right">
-                                    <div className="btn-group">
-                                        <button type="button" className="btn btn-default dropdown-toggle usa"
-                                                data-toggle="dropdown">
-                                            USA
-                                            <span className="caret"/>
-                                        </button>
-                                        <ul className="dropdown-menu">
-                                            <li><a href="#">Canada</a></li>
-                                            <li><a href="#">UK</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div className="btn-group">
-                                        <button type="button" className="btn btn-default dropdown-toggle usa"
-                                                data-toggle="dropdown">
-                                            DOLLAR
-                                            <span className="caret"/>
-                                        </button>
-                                        <ul className="dropdown-menu">
-                                            <li><a href="#">Canadian Dollar</a></li>
-                                            <li><a href="#">Pound</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-sm-8">
-                                <div className="shop-menu pull-right">
-                                    <ul className="nav navbar-nav">
                                         <li><a href="#"><i className="fa fa-user"/> Account</a></li>
                                         <li><a href="#"><i className="fa fa-star"/> Wishlist</a></li>
                                         <li><a href="checkout.html"><i className="fa fa-crosshairs"/> Checkout</a>
@@ -79,10 +82,30 @@ class Header extends Component {
                     </div>
                 </div>
 
+                <div className="header-middle">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-sm-4">
+                                <div className="pull-left">
+                                    <div className="search_box pull-right">
+                                        <input type="text" placeholder="Tìm kiếm..." />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-sm-8">
+                                <div className="logo pull-right">
+                                    <img src={'/frontend/images/logo.png'}/>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
                 <div className="header-bottom">
                     <div className="container">
                         <div className="row">
-                            <div className="col-sm-9">
+                            <div className="col-sm-12">
                                 <div className="navbar-header">
                                     <button type="button" className="navbar-toggle" data-toggle="collapse"
                                             data-target=".navbar-collapse">
@@ -94,31 +117,27 @@ class Header extends Component {
                                 </div>
                                 <div className="mainmenu pull-left">
                                     <ul className="nav navbar-nav collapse navbar-collapse">
-                                        <li><a href="index.html" className="active">Home</a></li>
-                                        <li className="dropdown"><a href="#">Shop<i className="fa fa-angle-down"/></a>
+                                        <li><NavLink to={'/index.html'}>TRANG CHỦ</NavLink></li>
+                                        <li className="dropdown"><NavLink to={'#'}>CHĂM SÓC DA MẶT</NavLink>
                                             <ul role="menu" className="sub-menu">
-                                                <li><a href="shop.html">Products</a></li>
-                                                <li><a href="product-details.html">Product Details</a></li>
-                                                <li><a href="checkout.html">Checkout</a></li>
-                                                <li><a href="cart.html">Cart</a></li>
-                                                <li><a href="login.html">Login</a></li>
+                                            {this.makeCategoryList()}
                                             </ul>
                                         </li>
-                                        <li className="dropdown"><a href="#">Blog<i
-                                            className="fa fa-angle-down"></i></a>
+                                        <li className="dropdown"><NavLink to={'#'}>CHĂM SÓC BODY</NavLink>
                                             <ul role="menu" className="sub-menu">
-                                                <li><a href="blog.html">Blog List</a></li>
-                                                <li><a href="blog-single.html">Blog Single</a></li>
+                                                {this.makeCategoryList2()}
                                             </ul>
                                         </li>
-                                        <li><a href="404.html">404</a></li>
-                                        <li><a href="contact-us.html">Contact</a></li>
+                                        <li className="dropdown"><NavLink to={'#'}>VIÊN UỐNG BỔ SUNG</NavLink>
+                                            <ul role="menu" className="sub-menu">
+                                                {this.makeCategoryList3()}
+                                            </ul>
+                                        </li>
+                                        <li><NavLink to={'/article/lam-dep.html'}>LÀM ĐẸP</NavLink></li>
+                                        <li><NavLink to={'/clinic/lam-dep.html'}>PHÒNG KHÁM</NavLink></li>
+                                        <li><NavLink to={'/contact-us.html'}>LIÊN HỆ</NavLink></li>
                                     </ul>
-                                </div>
-                            </div>
-                            <div className="col-sm-3">
-                                <div className="search_box pull-right">
-                                    <input type="text" placeholder="Search"/>
+
                                 </div>
                             </div>
                         </div>

@@ -67929,6 +67929,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.obj.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.obj.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-thumbnail",
         src: this.props.obj.thumbnail_app,
         alt: this.props.obj.name
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.obj.short_content), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -68214,8 +68215,7 @@ function (_Component) {
 
       var config = {
         'content-type': 'multipart/form-data'
-      }; // return axios.article(url, formData, config);
-
+      };
       return Object(axios_index__WEBPACK_IMPORTED_MODULE_1__["post"])(url, formData, config);
     });
 
@@ -68289,7 +68289,6 @@ function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      console.log(this.props.match.params.id);
       axios_index__WEBPACK_IMPORTED_MODULE_1___default.a.get(window.Laravel.baseUrl + '/api/schedule/' + this.props.match.params.id).then(function (response) {
         if (response.data.status === 1) {
           _this2.setState(response.data.data);
@@ -68600,7 +68599,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.obj.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.obj.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "thumbnail",
+        className: "img-thumbnail",
         src: this.props.obj.thumbnail,
         alt: this.props.obj.title
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.obj.short_content), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {

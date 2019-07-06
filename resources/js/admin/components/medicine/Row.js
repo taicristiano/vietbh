@@ -35,7 +35,7 @@ class Row extends Component {
                     {this.props.obj.name}
                 </td>
                 <td>
-                    <img src={this.props.obj.thumbnail_app} alt={this.props.obj.name}/>
+                    <img className="img-thumbnail" src={this.props.obj.thumbnail_app} alt={this.props.obj.name}/>
                 </td>
                 <td>
                     {this.props.obj.short_content}

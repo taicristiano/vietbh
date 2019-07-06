@@ -26,6 +26,9 @@ Route::resource('clinic', 'ClinicController');
 Route::resource('schedule', 'ScheduleController');
 Route::resource('scheduleContent', 'ScheduleContentController');
 Route::resource('message', 'MessageController');
+Route::resource('category', 'CategoryController');
+
+Route::resource('index', 'IndexController');
 
 Route::post('user/{id}', 'UserController@update')->name('update');
 Route::post('login', 'Authcontroller@login')->name('login');

@@ -262,10 +262,10 @@ a#scrollUp i{
   height: 35px;
   outline: medium none;
   padding-left: 10px;
-  width: 155px;
+  width: 250px;
   background-image: url(../images/home/searchicon.png);
   background-repeat: no-repeat;
-  background-position: 130px;
+  background-position: 225px;
 }
 
 
@@ -581,7 +581,8 @@ ul.sub-menu {
 }
 
 .item {
-  padding-left: 100px;
+  /*padding-left: 100px;*/
+  /*padding-right: 100px;*/
 }
 
 
@@ -882,12 +883,12 @@ h2.title {
   color: #696763;
 }
 
-.productinfo img{
-  width: 100%;
-}
-
 .productinfo{
  position:relative;
+}
+
+.productinfo img{
+  max-height: 250px;
 }
 
 .product-overlay {
@@ -907,6 +908,9 @@ h2.title {
   height:100%;
 }
 
+.title1 {
+  height: 39px;
+}
 
 .product-overlay .overlay-content {
   bottom: 0;
@@ -1169,12 +1173,13 @@ h2.title {
 
 .view-product {
   position: relative;
+  width: 450px;
 }
 
 .view-product img {
-  border: 1px solid #F7F7F0;
-  height: 380px;
-  width: 100%;
+  /*padding-top: 60px;*/
+  max-height: 400px;
+  height: auto !important;
 }
 
 .view-product h3 {
@@ -1215,7 +1220,7 @@ h2.title {
 }
 
 .product-information {
-  border: 1px solid #F7F7F0;
+  /*border: 1px solid #F7F7F0;*/
   overflow: hidden;
   padding-bottom: 60px;
   padding-left: 60px;
@@ -2076,15 +2081,35 @@ h2.title {
   color: #FE980F
 }
 
+.single-blog-post{
+  padding-top: 15px;
+}
 
-.blog-post-area  
-.single-blog-post 
-.btn-primary {
+.blog-post-area.single-blog-post.btn-primary {
   background:#FE980F;
   border: medium none;
   border-radius: 0;
   color: #FFFFFF;
   margin-top: 17px;
+}
+
+.control-img img{
+  max-width: 100%;
+  text-align: center!important;
+  width: 600px;
+  display: block;
+  margin: 0 auto;
+}
+
+.medicine-config img {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+
+}
+
+.medicine-config h2 {
+  text-align: center;
 }
 
 
@@ -2093,7 +2118,7 @@ h2.title {
   margin-top:45px
 }
 
-.pagination-area 
+.pagination-area
 .pagination li a {
   background:#F0F0E9;
   border: 0 none;

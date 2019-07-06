@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Medicine;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -61,6 +62,7 @@ class MedicineController extends Controller
                 $imageResize->resize(120, 180);
                 $imageResize->save(public_path('images/medicine/thumbnail/' . $filename));
                 $imageResize2 = Image::make($data['thumbnail']->getRealPath());
+//                $imageResize2->resize(150, 250);
                 $imageResize2->save(public_path('images/medicine/' . $filename));
                 $medicine['thumbnail'] = $filename;
                 $medicineId = Medicine::insertGetId($medicine);
@@ -79,6 +81,7 @@ class MedicineController extends Controller
                     $imageResize->resize(120, 180);
                     $imageResize->save(public_path('images/medicine/thumbnail/' . $filename));
                     $imageResize2 = Image::make($data['thumbnailUpdate']->getRealPath());
+//                    $imageResize2->resize(150, 250);
                     $imageResize2->save(public_path('images/medicine/' . $filename));
                     $medicine['thumbnail'] = $filename;
                 }
@@ -165,7 +168,7 @@ class MedicineController extends Controller
             $symptomData = Medicine::where('id', $id)->first();
             return $this->responseSuccess($symptomData);
         } catch (Exception $exception) {
-            return response()->json(['status' => 0, 'error' => $exception->getMessage()]);
+            return $this->responseError($exception->getMessage());
         }
     }
 }
