@@ -23,7 +23,6 @@ class ArticleDetail extends Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <div className="container">
                 <div className="row">

@@ -13,10 +13,16 @@ export default class App extends Component {
     render() {
         return (
             <BrowserRouter>
-                <div>
-                    <Header/>
+                <div id="wrapper">
                     <Sidebar/>
-                    <div className="content-wrapper"><RouterPath /></div>
+                    <div id="content-wrapper" className="d-flex flex-column">
+                        <div id="content">
+                            <Header/>
+                            <div className="container-fluid">
+                                <RouterPath />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </BrowserRouter>
         )

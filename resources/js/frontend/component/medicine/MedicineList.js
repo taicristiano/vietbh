@@ -17,7 +17,10 @@ class MedicineList extends Component {
         axios.get(window.Laravel.baseUrl + '/api/category/' + id)
             .then(response => {
                 if (response.data.status === 1) {
+                    document.title = response.data.data.cate_name;
                     this.setState(response.data.data)
+                } else {
+                    document.title = '';
                 }
             })
             .catch(function (error) {
@@ -27,19 +30,20 @@ class MedicineList extends Component {
 
 
     fetchRows() {
-        let list = Object.values(this.state);
+        let list1 = this.state;
+        delete list1.cate_name;
+        let list = Object.values(list1);
         return list.map((object, i) => {
             return <MedicineRow obj={object} key={i} index={i}/>
         })
     }
 
     render() {
-        console.log(this.state);
         return (
             <div className="container">
                 <div className="row">
                     <div className="features_items">
-                        <h2 className="title text-center">Features Items</h2>
+                        <h2 className="title text-center">{this.state.cate_name}</h2>
                         {this.fetchRows()}
                     </div>
                     <ul className="pagination">

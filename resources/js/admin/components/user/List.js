@@ -43,23 +43,29 @@ class List extends Component {
 
     render() {
         return (
-            <section className="content">
-                <table className="table">
-                    <thead>
-                    <tr>
-                        <th>Số thứ tự</th>
-                        <th>Tên lịch trình</th>
-                        <th>Thumbnail</th>
-                        <th>Short content</th>
-                        <th>Chỉnh sửa</th>
-                        <th>Xóa</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {this.fetchRows()}
-                    </tbody>
-                </table>
-            </section>
+            <div className="card shadow mb-4">
+                <div className="card-header py-3 text-center">
+                    <h1 className="m-0 font-weight-bold text-primary">Danh sách người dùng</h1>
+                </div>
+                <div className="card-body">
+                    <div className="table-responsive">
+                        <table className="table table-bordered text-center">
+                            <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Thumbnail</th>
+                                <th>Short content</th>
+                                <th colSpan={2}>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {this.fetchRows()}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         )
     }
 }

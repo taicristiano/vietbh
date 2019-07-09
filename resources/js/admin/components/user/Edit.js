@@ -16,7 +16,6 @@ class Edit extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.match.params.id);
         axios.get(window.Laravel.baseUrl + '/api/schedule/' + this.props.match.params.id)
             .then(response => {
                 if (response.data.status === 1) {

@@ -66130,7 +66130,6 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log(this.state);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66259,7 +66258,6 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log(this.state);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66268,7 +66266,11 @@ function (_Component) {
         className: "blog-post-area"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "title text-center"
-      }, "Latest From our Blog"), this.fetchRows())));
+      }, "C\xC1CH D\u01AF\u1EE0NG TR\u1EAENG DA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-9"
+      }, this.fetchRows()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-3"
+      }))));
     }
   }]);
 
@@ -66327,7 +66329,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-sm-6"
+        className: "col-sm-6 min-height"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "single-blog-post"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
@@ -66357,10 +66359,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: this.props.obj.thumbnail_web,
         alt: this.props.obj.title
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.obj.short_content), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "btn btn-primary",
-        href: ""
-      }, "Xem th\xEAm")));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.obj.short_content)));
     }
   }]);
 
@@ -66506,11 +66505,11 @@ function (_Component) {
         href: "#"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-phone"
-      }), " +2 95 01 88 821")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }), " 0368 718 567")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-envelope"
-      }), " info@domain.com"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), " doanpham94nd@gmail.com"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-6"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "social-icons pull-right"
@@ -66520,23 +66519,19 @@ function (_Component) {
         href: "#"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-user"
-      }), " Account")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-star"
-      }), " Wishlist")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }), " T\xE0i kho\u1EA3n")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "checkout.html"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-crosshairs"
-      }), " Checkout")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }), "Thanh to\xE1n")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "cart.html"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-shopping-cart"
-      }), " Cart")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }), " Gi\u1ECF h\xE0ng")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "login.html"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-lock"
-      }), " Login")))))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), " \u0110\u0103ng nh\u1EADp")))))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "header-middle"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
@@ -66545,18 +66540,18 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "pull-left"
+        className: "logo pull-left"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "logo-header",
+        src: '/frontend/images/logo.png',
+        alt: "trang ch\u1EE7"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-sm-8"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search_box pull-right"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "T\xECm ki\u1EBFm..."
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-sm-8"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "logo pull-right"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: '/frontend/images/logo.png'
       })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "header-bottom"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66597,23 +66592,23 @@ function (_Component) {
         className: "dropdown"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
         to: '#'
-      }, "CH\u0102M S\xD3C BODY"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, "CH\u0102M S\xD3C C\u01A0 TH\u1EC2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         role: "menu",
         className: "sub-menu"
       }, this.makeCategoryList2())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "dropdown"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
         to: '#'
-      }, "VI\xCAN U\u1ED0NG B\u1ED4 SUNG"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, "VI\xCAN U\u1ED0NG"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         role: "menu",
         className: "sub-menu"
       }, this.makeCategoryList3())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
         to: '/article/lam-dep.html'
       }, "L\xC0M \u0110\u1EB8P")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+        to: '/article/lam-dep.html'
+      }, "TIN T\u1EE8C")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
         to: '/clinic/lam-dep.html'
-      }, "PH\xD2NG KH\xC1M")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        to: '/contact-us.html'
-      }, "LI\xCAN H\u1EC6")))))))));
+      }, "PH\xD2NG KH\xC1M")))))))));
     }
   }]);
 
@@ -67196,7 +67191,6 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log(this.state);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -67470,7 +67464,11 @@ function (_Component) {
       var id = aryMedicine.splice(-1)[0];
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(window.Laravel.baseUrl + '/api/category/' + id).then(function (response) {
         if (response.data.status === 1) {
+          document.title = response.data.data.cate_name;
+
           _this2.setState(response.data.data);
+        } else {
+          document.title = '';
         }
       })["catch"](function (error) {
         console.log(error);
@@ -67479,7 +67477,9 @@ function (_Component) {
   }, {
     key: "fetchRows",
     value: function fetchRows() {
-      var list = Object.values(this.state);
+      var list1 = this.state;
+      delete list1.cate_name;
+      var list = Object.values(list1);
       return list.map(function (object, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MedicineRow__WEBPACK_IMPORTED_MODULE_2__["default"], {
           obj: object,
@@ -67491,7 +67491,6 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log(this.state);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -67500,7 +67499,7 @@ function (_Component) {
         className: "features_items"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "title text-center"
-      }, "Features Items"), this.fetchRows()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, this.state.cate_name), this.fetchRows()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "pagination"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "active"

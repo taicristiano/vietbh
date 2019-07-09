@@ -31,13 +31,17 @@ class ArticleList extends Component {
     }
 
     render() {
-        console.log(this.state);
         return (
             <div className="container">
                 <div className="row">
                     <div className="blog-post-area">
-                        <h2 className="title text-center">Latest From our Blog</h2>
-                        {this.fetchRows()}
+                        <h2 className="title text-center">CÁCH DƯỠNG TRẮNG DA</h2>
+                        <div className="col-md-9">
+                            {this.fetchRows()}
+                        </div>
+                        <div className="col-md-3">
+
+                        </div>
                     </div>
                 </div>
             </div>

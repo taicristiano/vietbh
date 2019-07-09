@@ -61,20 +61,19 @@ class Header extends Component {
                             <div className="col-sm-6">
                                 <div className="contactinfo">
                                     <ul className="nav nav-pills">
-                                        <li><a href="#"><i className="fa fa-phone"/> +2 95 01 88 821</a></li>
-                                        <li><a href="#"><i className="fa fa-envelope"/> info@domain.com</a></li>
+                                        <li><a href="#"><i className="fa fa-phone"/> 0368 718 567</a></li>
+                                        <li><a href="#"><i className="fa fa-envelope"/> doanpham94nd@gmail.com</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div className="col-sm-6">
                                 <div className="social-icons pull-right">
                                     <ul className="nav navbar-nav">
-                                        <li><a href="#"><i className="fa fa-user"/> Account</a></li>
-                                        <li><a href="#"><i className="fa fa-star"/> Wishlist</a></li>
-                                        <li><a href="checkout.html"><i className="fa fa-crosshairs"/> Checkout</a>
+                                        <li><a href="#"><i className="fa fa-user"/> Tài khoản</a></li>
+                                        <li><a href="checkout.html"><i className="fa fa-crosshairs"/>Thanh toán</a>
                                         </li>
-                                        <li><a href="cart.html"><i className="fa fa-shopping-cart"/> Cart</a></li>
-                                        <li><a href="login.html"><i className="fa fa-lock"/> Login</a></li>
+                                        <li><a href="cart.html"><i className="fa fa-shopping-cart"/> Giỏ hàng</a></li>
+                                        <li><a href="login.html"><i className="fa fa-lock"/> Đăng nhập</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -86,15 +85,13 @@ class Header extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-sm-4">
-                                <div className="pull-left">
-                                    <div className="search_box pull-right">
-                                        <input type="text" placeholder="Tìm kiếm..." />
-                                    </div>
+                                <div className="logo pull-left">
+                                    <img className='logo-header' src={'/frontend/images/logo.png'} alt="trang chủ"/>
                                 </div>
                             </div>
                             <div className="col-sm-8">
-                                <div className="logo pull-right">
-                                    <img src={'/frontend/images/logo.png'}/>
+                                <div className="search_box pull-right">
+                                    <input type="text" placeholder="Tìm kiếm..." />
                                 </div>
                             </div>
 
@@ -123,19 +120,19 @@ class Header extends Component {
                                             {this.makeCategoryList()}
                                             </ul>
                                         </li>
-                                        <li className="dropdown"><NavLink to={'#'}>CHĂM SÓC BODY</NavLink>
+                                        <li className="dropdown"><NavLink to={'#'}>CHĂM SÓC CƠ THỂ</NavLink>
                                             <ul role="menu" className="sub-menu">
-                                                {this.makeCategoryList2()}
+                                                  {this.makeCategoryList2()}
                                             </ul>
                                         </li>
-                                        <li className="dropdown"><NavLink to={'#'}>VIÊN UỐNG BỔ SUNG</NavLink>
+                                        <li className="dropdown"><NavLink to={'#'}>VIÊN UỐNG</NavLink>
                                             <ul role="menu" className="sub-menu">
                                                 {this.makeCategoryList3()}
                                             </ul>
                                         </li>
                                         <li><NavLink to={'/article/lam-dep.html'}>LÀM ĐẸP</NavLink></li>
+                                        <li><NavLink to={'/article/lam-dep.html'}>TIN TỨC</NavLink></li>
                                         <li><NavLink to={'/clinic/lam-dep.html'}>PHÒNG KHÁM</NavLink></li>
-                                        <li><NavLink to={'/contact-us.html'}>LIÊN HỆ</NavLink></li>
                                     </ul>
 
                                 </div>

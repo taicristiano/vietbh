@@ -1,18 +1,30 @@
-// resources/assets/js/components/UserList.js
 import CKEditor from "react-ckeditor-component";
 import React, {Component} from 'react'
 import {post} from 'axios/index';
+import CategoryOption from "./categoryOption";
+import axios from "axios";
 
 class Add extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            scheduleDay: 0,
             content: ''
         };
         this.handleFieldChange = this.handleFieldChange.bind(this);
         this.handleCreateNewProject = this.handleCreateNewProject.bind(this);
         this.handleEditorChange = this.handleEditorChange.bind(this);
+    }
+
+    componentDidMount() {
+        axios.get(window.Laravel.baseUrl + '/api/category')
+            .then(response => {
+                if (response.data.status === 1) {
+                    this.setState(response.data.data)
+                }
+            })
+            .catch(function (error) {
+                console.log(error)
+            });
     }
 
     handleFieldChange(event) {
@@ -36,7 +48,6 @@ class Add extends Component {
     handleCreateNewProject(event) {
         event.preventDefault();
         const {history} = this.props;
-        console.log(this.state);
 
         this.uploadData(this.state).then((response) => {
             if (response.data.status == 1) {
@@ -64,15 +75,29 @@ class Add extends Component {
         });
     };
 
-    makeScheduleContentDay = () => {
-        let scheduleContent = [];
-        if (this.state.scheduleDay > 0) {
-            for (let i = 0; i < this.state.scheduleDay; i++) {
-                scheduleContent.push(<ScheduleContent key={i} number={i} getValue={this.handleFieldChange}/>)
-            }
-            return scheduleContent;
+    makeCategoryList() {
+        if (this.state.category1 instanceof Array) {
+            return this.state.category1.map((object, i) => {
+                return <CategoryOption obj={object} key={i} index={i}/>
+            })
         }
-    };
+    }
+
+    makeCategoryList2() {
+        if (this.state.category2 instanceof Array) {
+            return this.state.category2.map((object, i) => {
+                return <CategoryOption obj={object} key={i} index={i}/>
+            })
+        }
+    }
+
+    makeCategoryList3() {
+        if (this.state.category3 instanceof Array) {
+            return this.state.category3.map((object, i) => {
+                return <CategoryOption obj={object} key={i} index={i}/>
+            })
+        }
+    }
 
     render() {
         return (
@@ -114,15 +139,15 @@ class Add extends Component {
                                         <input type="text" className="form-control" id="price" name="price"
                                                onChange={this.handleFieldChange}/>
                                     </div>
-                                </div>
-                                <div className="box-footer">
-                                    <div className="form-group col-xs-3">
-                                        <input type="text" className="form-control" id="test"
-                                               placeholder="Chọn số ngày lịch trình"
-                                               onChange={(event) => this.search(event)}/>
+                                    <div className="form-group col-xs-6">
+                                        <label htmlFor="exampleInputEmail1">Danh mục sản phẩm</label>
+                                        <select className="form-control" name="category" id={"category"} onChange={this.handleFieldChange}>
+                                            {this.makeCategoryList()}
+                                            {this.makeCategoryList2()}
+                                            {this.makeCategoryList3()}
+                                        </select>
                                     </div>
                                 </div>
-                                {this.makeScheduleContentDay()}
                                 <div className="box-footer text-center">
                                     <button type="submit" className="btn btn-primary ">Thêm mới</button>
                                     <button type="reset" className="btn btn-danger ">Hủy bỏ</button>

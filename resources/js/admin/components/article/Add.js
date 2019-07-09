@@ -36,7 +36,6 @@ class Add extends Component {
     handleCreateNewProject(event) {
         event.preventDefault();
         const {history} = this.props;
-        console.log(this.state);
 
         this.uploadData(this.state).then((response) => {
             if (response.data.status == 1) {

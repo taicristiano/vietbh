@@ -3,6 +3,7 @@
 import React, {Component} from 'react'
 import axios, {post} from 'axios/index';
 import CKEditor from "react-ckeditor-component";
+import CategoryOption from "./categoryOption";
 
 class Edit extends Component {
     constructor(props) {
@@ -20,6 +21,15 @@ class Edit extends Component {
             .then(response => {
                 if (response.data.status === 1) {
                     this.setState(response.data.data);
+                }
+            })
+            .catch(function (error) {
+                console.log(error)
+            });
+        axios.get(window.Laravel.baseUrl + '/api/category')
+            .then(response => {
+                if (response.data.status === 1) {
+                    this.setState(response.data.data)
                 }
             })
             .catch(function (error) {
@@ -59,6 +69,30 @@ class Edit extends Component {
         })
     }
 
+    makeCategoryList() {
+        if (this.state.category1 instanceof Array) {
+            return this.state.category1.map((object, i) => {
+                return <CategoryOption obj={object} key={i} index={i}/>
+            })
+        }
+    }
+
+    makeCategoryList2() {
+        if (this.state.category2 instanceof Array) {
+            return this.state.category2.map((object, i) => {
+                return <CategoryOption obj={object} key={i} index={i}/>
+            })
+        }
+    }
+
+    makeCategoryList3() {
+        if (this.state.category3 instanceof Array) {
+            return this.state.category3.map((object, i) => {
+                return <CategoryOption obj={object} key={i} index={i}/>
+            })
+        }
+    }
+
     uploadData = (data) => {
         const url = '/api/medicine';
         const formData = new FormData();
@@ -72,6 +106,7 @@ class Edit extends Component {
     };
 
     render() {
+        console.log(this.state.category)
         return (
             <section className="content">
                 <div className="row">
@@ -81,7 +116,8 @@ class Edit extends Component {
                                 <div className="box-body">
                                     <div className="form-group col-xs-6">
                                         <label htmlFor="exampleInputEmail1">Tên sản phẩm</label>
-                                        <input type="text" className="form-control" id="name" name="name" defaultValue={this.state.name}
+                                        <input type="text" className="form-control" id="name" name="name"
+                                               defaultValue={this.state.name}
                                                onChange={this.handleFieldChange}/>
                                     </div>
                                     <div className="form-group col-xs-6">
@@ -95,7 +131,8 @@ class Edit extends Component {
                                     </div>
                                     <div className="form-group col-xs-12">
                                         <label htmlFor="editor1">Nội dung tóm tắt</label>
-                                        <textarea className="form-control" name="short_content" rows="5" value={this.state.short_content}
+                                        <textarea className="form-control" name="short_content" rows="5"
+                                                  value={this.state.short_content}
                                                   onChange={this.handleFieldChange}/>
                                     </div>
                                     <div className="form-group col-xs-12">
@@ -112,9 +149,20 @@ class Edit extends Component {
                                     </div>
                                     <div className="form-group col-xs-6">
                                         <label htmlFor="exampleInputEmail1">Giá</label>
-                                        <input type="text" className="form-control" id="price" name="price" defaultValue={this.state.price}
+                                        <input type="text" className="form-control" id="price" name="price"
+                                               defaultValue={this.state.price}
                                                onChange={this.handleFieldChange}/>
                                     </div>
+                                    <div className="form-group col-xs-6">
+                                        <label htmlFor="exampleInputEmail1">Danh mục sản phẩm</label>
+                                        <select className="form-control" name="category" id="category"
+                                                value={this.state.category} onChange={this.handleFieldChange}>
+                                            {this.makeCategoryList()}
+                                            {this.makeCategoryList2()}
+                                            {this.makeCategoryList3()}
+                                        </select>
+                                    </div>
+
                                 </div>
                                 <div className="box-footer text-center">
                                     <button type="submit" className="btn btn-primary ">Thêm mới</button>

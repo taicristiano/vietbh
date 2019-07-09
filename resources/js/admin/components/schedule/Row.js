@@ -29,7 +29,7 @@ class Row extends Component {
         return (
             <tr>
                 <td>
-                    {this.props.obj.id}
+                    {this.props.index + 1}
                 </td>
                 <td>
                     {this.props.obj.title}
@@ -41,10 +41,10 @@ class Row extends Component {
                     {this.props.obj.short_content}
                 </td>
                 <td>
-                    <Link className='btn btn-primary' to={'/admin/schedule/edit/' + this.props.obj.id}>Edit</Link>
+                    <Link className='btn btn-primary' to={'/admin/schedule/edit/' + this.props.obj.id}>Sửa</Link>
                 </td>
                 <td>
-                    <button className='btn btn-danger' onClick={this.handleDelete}>Delete</button>
+                    <button className='btn btn-danger' onClick={this.handleDelete}>Xóa</button>
                 </td>
             </tr>
         )

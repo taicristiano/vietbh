@@ -29,7 +29,7 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
@@ -87,8 +87,8 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -133,7 +133,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -153,7 +153,15 @@ class CategoryController extends Controller
     public function show($id)
     {
         try {
+            $user = config('category');
             $symptomData = Medicine::where('category', $id)->get()->toArray();
+            if ($id <= 5) {
+                $symptomData['cate_name'] = $user['category1'][$id - 1]['name'];
+            } elseif ($id <= 10) {
+                $symptomData['cate_name'] = $user['category2'][$id - 1]['name'];
+            } else {
+                $symptomData['cate_name'] = $user['category3'][$id - 1]['name'];
+            }
             return $this->responseSuccess($symptomData);
         } catch (Exception $exception) {
             return $this->responseError($exception->getMessage());

@@ -252,20 +252,23 @@ a#scrollUp i{
 	color:#fdb45e;
 }
 
+.search_box {
+  padding-top: 20px;
+}
+
 .search_box input {
-  background: #F0F0E9;
-  border: medium none;
-  color: #B2B2B2;
+  border-radius: 30px;
+  border :1px solid #d5d5d5;
   font-family: 'roboto';
-  font-size: 12px;
-  font-weight: 300;
-  height: 35px;
+  font-size: 14px;
+  font-weight: normal;
+  height: 45px;
   outline: medium none;
   padding-left: 10px;
-  width: 250px;
+  width: 335px;
   background-image: url(../images/home/searchicon.png);
   background-repeat: no-repeat;
-  background-position: 225px;
+  background-position: 300px;
 }
 
 
@@ -2012,7 +2015,7 @@ h2.title {
 .single-blog-post a img {
   border: 1px solid #F7F7F0;
   width: 100%;
-  margin-bottom: 30px
+  margin-bottom: 30px;
 }
 
 .blog-post-area  
@@ -2081,10 +2084,6 @@ h2.title {
   color: #FE980F
 }
 
-.single-blog-post{
-  padding-top: 15px;
-}
-
 .blog-post-area.single-blog-post.btn-primary {
   background:#FE980F;
   border: medium none;
@@ -2099,6 +2098,14 @@ h2.title {
   width: 600px;
   display: block;
   margin: 0 auto;
+}
+
+.logo-header {
+  width: 100px;
+}
+
+.min-height {
+  min-height: 520px;
 }
 
 .medicine-config img {

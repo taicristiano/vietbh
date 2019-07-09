@@ -55,6 +55,7 @@ class MedicineController extends Controller
                     'content' => $data['content'],
                     'short_content' => $data['short_content'],
                     'price' => $data['price'],
+                    'alias' => str_slug($data['name'])
                 ];
                 $extension = $data['thumbnail']->getClientOriginalExtension(); // getting image extension
                 $filename = time() . '.' . $extension;
@@ -62,7 +63,6 @@ class MedicineController extends Controller
                 $imageResize->resize(120, 180);
                 $imageResize->save(public_path('images/medicine/thumbnail/' . $filename));
                 $imageResize2 = Image::make($data['thumbnail']->getRealPath());
-//                $imageResize2->resize(150, 250);
                 $imageResize2->save(public_path('images/medicine/' . $filename));
                 $medicine['thumbnail'] = $filename;
                 $medicineId = Medicine::insertGetId($medicine);
@@ -70,9 +70,11 @@ class MedicineController extends Controller
             } else {
                 $medicine = [
                     'name' => $data['name'],
+                    'alias' => str_slug($data['name']),
                     'content' => $data['content'],
                     'short_content' => $data['short_content'],
-                    'price' => $data['price']
+                    'price' => $data['price'],
+                    'category' => $data['category']
                 ];
                 if (!empty($data['thumbnailUpdate'])) {
                     $extension = $data['thumbnailUpdate']->getClientOriginalExtension(); // getting image extension
@@ -81,7 +83,6 @@ class MedicineController extends Controller
                     $imageResize->resize(120, 180);
                     $imageResize->save(public_path('images/medicine/thumbnail/' . $filename));
                     $imageResize2 = Image::make($data['thumbnailUpdate']->getRealPath());
-//                    $imageResize2->resize(150, 250);
                     $imageResize2->save(public_path('images/medicine/' . $filename));
                     $medicine['thumbnail'] = $filename;
                 }

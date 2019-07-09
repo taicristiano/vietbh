@@ -66093,9 +66093,16 @@ function (_Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common_Header__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common_Sidebar__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "content-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RouterPath__WEBPACK_IMPORTED_MODULE_3__["default"], null))));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common_Sidebar__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "content-wrapper",
+        className: "d-flex flex-column"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_common_Header__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container-fluid"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RouterPath__WEBPACK_IMPORTED_MODULE_3__["default"], null))))));
     }
   }]);
 
@@ -66343,7 +66350,6 @@ function (_Component) {
     value: function handleCreateNewProject(event) {
       event.preventDefault();
       var history = this.props.history;
-      console.log(this.state);
       this.uploadData(this.state).then(function (response) {
         if (response.data.status == 1) {
           history.push('/admin/article');
@@ -66746,11 +66752,21 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        className: "content"
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card shadow mb-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header py-3 text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "m-0 font-weight-bold text-primary"
+      }, "Danh s\xE1ch b\xE0i \u0111\u0103ng")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "table-responsive"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-        className: "table"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "S\u1ED1 th\u1EE9 t\u1EF1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "T\xEAn s\u1EA3n ph\u1EA9m"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Thumbnail"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Short content"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Ch\u1EC9nh s\u1EEDa"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "X\xF3a"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.fetchRows())));
+        className: "table table-bordered text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "STT"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "T\xEAn s\u1EA3n ph\u1EA9m"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Thumbnail"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Short content"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        colSpan: 2
+      }, "Action"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.fetchRows())))));
     }
   }]);
 
@@ -66899,187 +66915,250 @@ function (_Component) {
   _createClass(Header, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
-        className: "main-header"
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+        className: "navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "sidebarToggleTop",
+        className: "btn btn-link d-md-none rounded-circle mr-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-bars"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "form-control bg-light border-0 small",
+        placeholder: "Search for...",
+        "aria-label": "Search",
+        "aria-describedby": "basic-addon2"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-group-append"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-primary",
+        type: "button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-search fa-sm"
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "navbar-nav ml-auto"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "nav-item dropdown no-arrow d-sm-none"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "index2.html",
-        className: "logo"
+        className: "nav-link dropdown-toggle",
+        href: "#",
+        id: "searchDropdown",
+        role: "button",
+        "data-toggle": "dropdown",
+        "aria-haspopup": "true",
+        "aria-expanded": "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-search fa-fw"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in",
+        "aria-labelledby": "searchDropdown"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "form-inline mr-auto w-100 navbar-search"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "form-control bg-light border-0 small",
+        placeholder: "Search for...",
+        "aria-label": "Search",
+        "aria-describedby": "basic-addon2"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-group-append"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-primary",
+        type: "button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-search fa-sm"
+      }))))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "nav-item dropdown no-arrow mx-1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "nav-link dropdown-toggle",
+        href: "#",
+        id: "alertsDropdown",
+        role: "button",
+        "data-toggle": "dropdown",
+        "aria-haspopup": "true",
+        "aria-expanded": "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-bell fa-fw"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "badge badge-danger badge-counter"
+      }, "3+")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in",
+        "aria-labelledby": "alertsDropdown"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "dropdown-header"
+      }, "Alerts Center"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "dropdown-item d-flex align-items-center",
+        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mr-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "icon-circle bg-primary"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-file-alt text-white"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "small text-gray-500"
+      }, "December 12, 2019"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "font-weight-bold"
+      }, "A new monthly report is ready to download!"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "dropdown-item d-flex align-items-center",
+        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mr-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "icon-circle bg-success"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-donate text-white"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "small text-gray-500"
+      }, "December 7, 2019"), "$290.29 has been deposited into your account!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "dropdown-item d-flex align-items-center",
+        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mr-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "icon-circle bg-warning"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-exclamation-triangle text-white"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "small text-gray-500"
+      }, "December 2, 2019"), "Spending Alert: We've noticed unusually high spending for your account.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "dropdown-item text-center small text-gray-500",
+        href: "#"
+      }, "Show All Alerts"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "nav-item dropdown no-arrow mx-1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "nav-link dropdown-toggle",
+        href: "#",
+        id: "messagesDropdown",
+        role: "button",
+        "data-toggle": "dropdown",
+        "aria-haspopup": "true",
+        "aria-expanded": "false"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-envelope fa-fw"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "badge badge-danger badge-counter"
+      }, "7")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in",
+        "aria-labelledby": "messagesDropdown"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "dropdown-header"
+      }, "Message Center"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "dropdown-item d-flex align-items-center",
+        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-list-image mr-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "rounded-circle",
+        src: "https://source.unsplash.com/fn_BT9fwg_E/60x60",
+        alt: ""
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "status-indicator bg-success"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "font-weight-bold"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "text-truncate"
+      }, "Hi there! I am wondering if you can help me with a problem I've been having."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "small text-gray-500"
+      }, "Emily Fowler \xB7 58m"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "dropdown-item d-flex align-items-center",
+        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-list-image mr-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "rounded-circle",
+        src: "https://source.unsplash.com/AU4VPcFN4LE/60x60",
+        alt: ""
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "status-indicator"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "text-truncate"
+      }, "I have the photos that you ordered last month, how would you like them sent to you?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "small text-gray-500"
+      }, "Jae Chun \xB7 1d"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "dropdown-item d-flex align-items-center",
+        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-list-image mr-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "rounded-circle",
+        src: "https://source.unsplash.com/CS2uCrpNzJY/60x60",
+        alt: ""
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "status-indicator bg-warning"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "text-truncate"
+      }, "Last month's report looks great, I am very happy with the progress so far, keep up the good work!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "small text-gray-500"
+      }, "Morgan Alvarez \xB7 2d"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "dropdown-item d-flex align-items-center",
+        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-list-image mr-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "rounded-circle",
+        src: "https://source.unsplash.com/Mv9hjnEUHR4/60x60",
+        alt: ""
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "status-indicator bg-success"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "text-truncate"
+      }, "Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "small text-gray-500"
+      }, "Chicken the Dog \xB7 2w"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "dropdown-item text-center small text-gray-500",
+        href: "#"
+      }, "Read More Messages"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "topbar-divider d-none d-sm-block"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "nav-item dropdown no-arrow"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "nav-link dropdown-toggle",
+        href: "#",
+        id: "userDropdown",
+        role: "button",
+        "data-toggle": "dropdown",
+        "aria-haspopup": "true",
+        "aria-expanded": "false"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "logo-mini"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "A"), "LT"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "logo-lg"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Admin"), "LTE")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-        className: "navbar navbar-static-top"
+        className: "mr-2 d-none d-lg-inline text-gray-600 small"
+      }, "Valerie Luna"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-profile rounded-circle",
+        src: "https://source.unsplash.com/QAB-WJcbgJk/60x60"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-menu dropdown-menu-right shadow animated--grow-in",
+        "aria-labelledby": "userDropdown"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "dropdown-item",
+        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-user fa-sm fa-fw mr-2 text-gray-400"
+      }), "Profile"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "dropdown-item",
+        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"
+      }), "Settings"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "dropdown-item",
+        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-list fa-sm fa-fw mr-2 text-gray-400"
+      }), "Activity Log"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-divider"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "dropdown-item",
         href: "#",
-        className: "sidebar-toggle",
-        "data-toggle": "push-menu",
-        role: "button"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "sr-only"
-      }, "Toggle navigation")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "navbar-custom-menu"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "nav navbar-nav"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "dropdown messages-menu"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#",
-        className: "dropdown-toggle",
-        "data-toggle": "dropdown"
+        "data-toggle": "modal",
+        "data-target": "#logoutModal"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-envelope-o"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "label label-success"
-      }, "4")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "dropdown-menu"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "header"
-      }, "You have 4 messages"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "menu"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "pull-left"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "dist/img/user2-160x160.jpg",
-        className: "img-circle",
-        alt: "User Image"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Support Team", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-clock-o"
-      }), " 5 mins")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Why not buy a new awesome theme?"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "pull-left"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "dist/img/user3-128x128.jpg",
-        className: "img-circle",
-        alt: "User Image"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "AdminLTE Design Team", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-clock-o"
-      }), " 2 hours")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Why not buy a new awesome theme?"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "pull-left"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "dist/img/user4-128x128.jpg",
-        className: "img-circle",
-        alt: "User Image"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Developers", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-clock-o"
-      }), " Today")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Why not buy a new awesome theme?"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "pull-left"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "dist/img/user3-128x128.jpg",
-        className: "img-circle",
-        alt: "User Image"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Sales Department", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-clock-o"
-      }), " Yesterday")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Why not buy a new awesome theme?"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "pull-left"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "dist/img/user4-128x128.jpg",
-        className: "img-circle",
-        alt: "User Image"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Reviewers", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-clock-o"
-      }), " 2 days")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Why not buy a new awesome theme?"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "footer"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, "See All Messages")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "dropdown notifications-menu"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#",
-        className: "dropdown-toggle",
-        "data-toggle": "dropdown"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-bell-o"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "label label-warning"
-      }, "10")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "dropdown-menu"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "header"
-      }, "You have 10 notifications"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "menu"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-users text-aqua"
-      }), " 5 new members joined today")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-warning text-yellow"
-      }), " Very long description here that may not fit into the page and may cause design problems")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-users text-red"
-      }), " 5 new members joined")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-shopping-cart text-green"
-      }), " 25 sales made")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-user text-red"
-      }), " You changed your username")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "footer"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, "View all")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "dropdown user user-menu"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#",
-        className: "dropdown-toggle",
-        "data-toggle": "dropdown"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "dist/img/user2-160x160.jpg",
-        className: "user-image",
-        alt: "User Image"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "hidden-xs"
-      }, "Alexander Pierce")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "dropdown-menu"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "user-header"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "dist/img/user2-160x160.jpg",
-        className: "img-circle",
-        alt: "User Image"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Alexander Pierce - Web Developer", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "Member since Nov. 2012"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "user-body"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-xs-4 text-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, "Followers")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-xs-4 text-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, "Sales")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-xs-4 text-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, "Friends")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "user-footer"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "pull-left"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#",
-        className: "btn btn-default btn-flat"
-      }, "Profile")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "pull-right"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#",
-        className: "btn btn-default btn-flat"
-      }, "Sign out")))))))));
+        className: "fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"
+      }), "Logout")))));
     }
   }]);
 
@@ -67125,6 +67204,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 var schedulePath = '/admin/schedule';
+var scheduleAddPath = '/admin/schedule/add';
 var medicinePath = '/admin/medicine';
 var postPath = '/admin/article';
 var userPath = '/admin/user';
@@ -67153,9 +67233,19 @@ function (_Component) {
       return pathActive.indexOf(path) !== -1 ? "active menu-open" : "";
     });
 
+    _defineProperty(_assertThisInitialized(_this), "checkShow", function (path) {
+      var pathActive = window.location.pathname;
+      return pathActive.indexOf(path) !== -1 ? "show" : "";
+    });
+
     _defineProperty(_assertThisInitialized(_this), "checkActive", function (path) {
       var pathActive = window.location.pathname;
-      return pathActive === path ? 'active' : '';
+      return pathActive == path ? 'active' : '';
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "checkCollapsed", function (path) {
+      var pathActive = window.location.pathname;
+      return pathActive.indexOf(path) !== -1 ? "" : "collapsed";
     });
 
     return _this;
@@ -67164,121 +67254,63 @@ function (_Component) {
   _createClass(Sidebar, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
-        className: "main-sidebar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        className: "sidebar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "sidebar-menu",
-        "data-widget": "tree"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "header"
-      }, "MAIN NAVIGATION"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "treeview " + this.checkActiveParentMenu(schedulePath)
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion",
+        id: "accordionSidebar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
+        className: "sidebar-brand d-flex align-items-center justify-content-center",
+        href: "index.html"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sidebar-brand-icon rotate-n-15"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-dashboard"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "L\u1ECBch tr\xECnh"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "pull-right-container"
+        className: "fas fa-laugh-wink"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sidebar-brand-text mx-3"
+      }, "SB Admin ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("sup", null, "2"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        className: "sidebar-divider my-0"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "nav-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "nav-link",
+        href: "index.html"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-angle-left pull-right"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "treeview-menu"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: this.checkActive(schedulePath)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        className: "active",
+        className: "fas fa-fw fa-tachometer-alt"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Dashboard"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        className: "sidebar-divider"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sidebar-heading"
+      }, "Interface"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "nav-item " + this.checkActiveParentMenu(schedulePath)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "nav-link " + this.checkCollapsed(schedulePath),
+        href: "#",
+        "data-toggle": "collapse",
+        "data-target": "#collapseTwo",
+        "aria-expanded": "true",
+        "aria-controls": "collapseTwo"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-fw fa-cog"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "L\u1ECBch tr\xECnh")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "collapseTwo",
+        className: "collapse " + this.checkShow(schedulePath),
+        "aria-labelledby": "headingTwo",
+        "data-parent": "#accordionSidebar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bg-white py-2 collapse-inner rounded"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "collapse-item " + this.checkActive(schedulePath),
         to: schedulePath
-      }, "Danh s\xE1ch")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: this.checkActive(schedulePath + "/add")
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        to: schedulePath + "/add"
-      }, "Th\xEAm m\u1EDBi")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "treeview " + this.checkActiveParentMenu(medicinePath)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-dashboard"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "M\u0129 ph\u1EA9m"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "pull-right-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-angle-left pull-right"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "treeview-menu"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: this.checkActive(medicinePath)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        className: "active",
-        to: medicinePath
-      }, "Danh s\xE1ch")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: this.checkActive(medicinePath + "/add")
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        to: medicinePath + "/add"
-      }, "Th\xEAm m\u1EDBi")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "treeview " + this.checkActiveParentMenu(postPath)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-dashboard"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "B\xE0i \u0111\u0103ng"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "pull-right-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-angle-left pull-right"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "treeview-menu"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: this.checkActive(postPath)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        className: "active",
-        to: postPath
-      }, "Danh s\xE1ch")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: this.checkActive(postPath + "/add")
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        to: postPath + "/add"
-      }, "Th\xEAm m\u1EDBi")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "treeview " + this.checkActiveParentMenu(userPath)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-dashboard"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Ng\u01B0\u1EDDi d\xF9ng"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "pull-right-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-angle-left pull-right"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "treeview-menu"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: this.checkActive(userPath)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        className: "active",
-        to: userPath
-      }, "Danh s\xE1ch")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: this.checkActive(userPath + "/add")
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        to: userPath + "/add"
-      }, "Th\xEAm m\u1EDBi")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "treeview " + this.checkActiveParentMenu(clinicPath)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-dashboard"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Ph\xF2ng kh\xE1m"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "pull-right-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-angle-left pull-right"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "treeview-menu"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: this.checkActive(clinicPath)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        className: "active",
-        to: clinicPath
-      }, "Danh s\xE1ch")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: this.checkActive(clinicPath + "/add")
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        to: clinicPath + "/add"
-      }, "Th\xEAm m\u1EDBi")))))));
+      }, "Danh s\xE1ch"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "collapse-item " + this.checkActive(schedulePath + '/add'),
+        to: schedulePath + '/add'
+      }, "Th\xEAm m\u1EDBi")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        className: "sidebar-divider d-none d-md-block"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "text-center d-none d-md-inline"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "rounded-circle border-0",
+        id: "sidebarToggle"
+      })));
     }
   }]);
 
@@ -67304,6 +67336,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var axios_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios/index */ "./node_modules/axios/index.js");
 /* harmony import */ var axios_index__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios_index__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _categoryOption__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./categoryOption */ "./resources/js/admin/components/medicine/categoryOption.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -67324,7 +67357,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-// resources/assets/js/components/UserList.js
+
+
 
 
 
@@ -67369,24 +67403,7 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "makeScheduleContentDay", function () {
-      var scheduleContent = [];
-
-      if (_this.state.scheduleDay > 0) {
-        for (var i = 0; i < _this.state.scheduleDay; i++) {
-          scheduleContent.push(react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(ScheduleContent, {
-            key: i,
-            number: i,
-            getValue: _this.handleFieldChange
-          }));
-        }
-
-        return scheduleContent;
-      }
-    });
-
     _this.state = {
-      scheduleDay: 0,
       content: ''
     };
     _this.handleFieldChange = _this.handleFieldChange.bind(_assertThisInitialized(_this));
@@ -67396,6 +67413,19 @@ function (_Component) {
   }
 
   _createClass(Add, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      axios_index__WEBPACK_IMPORTED_MODULE_2___default.a.get(window.Laravel.baseUrl + '/api/category').then(function (response) {
+        if (response.data.status === 1) {
+          _this2.setState(response.data.data);
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  }, {
     key: "handleFieldChange",
     value: function handleFieldChange(event) {
       this.setState(_defineProperty({}, event.target.name, event.target.value));
@@ -67413,7 +67443,6 @@ function (_Component) {
     value: function handleCreateNewProject(event) {
       event.preventDefault();
       var history = this.props.history;
-      console.log(this.state);
       this.uploadData(this.state).then(function (response) {
         if (response.data.status == 1) {
           history.push('/admin/medicine');
@@ -67423,10 +67452,47 @@ function (_Component) {
       });
     }
   }, {
+    key: "makeCategoryList",
+    value: function makeCategoryList() {
+      if (this.state.category1 instanceof Array) {
+        return this.state.category1.map(function (object, i) {
+          return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_categoryOption__WEBPACK_IMPORTED_MODULE_3__["default"], {
+            obj: object,
+            key: i,
+            index: i
+          });
+        });
+      }
+    }
+  }, {
+    key: "makeCategoryList2",
+    value: function makeCategoryList2() {
+      if (this.state.category2 instanceof Array) {
+        return this.state.category2.map(function (object, i) {
+          return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_categoryOption__WEBPACK_IMPORTED_MODULE_3__["default"], {
+            obj: object,
+            key: i,
+            index: i
+          });
+        });
+      }
+    }
+  }, {
+    key: "makeCategoryList3",
+    value: function makeCategoryList3() {
+      if (this.state.category3 instanceof Array) {
+        return this.state.category3.map(function (object, i) {
+          return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_categoryOption__WEBPACK_IMPORTED_MODULE_3__["default"], {
+            obj: object,
+            key: i,
+            index: i
+          });
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("section", {
         className: "content"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -67489,19 +67555,16 @@ function (_Component) {
         id: "price",
         name: "price",
         onChange: this.handleFieldChange
-      }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "box-footer"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "form-group col-xs-3"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
-        type: "text",
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "form-group col-xs-6"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "exampleInputEmail1"
+      }, "Danh m\u1EE5c s\u1EA3n ph\u1EA9m"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("select", {
         className: "form-control",
-        id: "test",
-        placeholder: "Ch\u1ECDn s\u1ED1 ng\xE0y l\u1ECBch tr\xECnh",
-        onChange: function onChange(event) {
-          return _this2.search(event);
-        }
-      }))), this.makeScheduleContentDay(), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        name: "category",
+        id: "category",
+        onChange: this.handleFieldChange
+      }, this.makeCategoryList(), this.makeCategoryList2(), this.makeCategoryList3()))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "box-footer text-center"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         type: "submit",
@@ -67535,6 +67598,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios_index__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios_index__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_ckeditor_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-ckeditor-component */ "./node_modules/react-ckeditor-component/lib/index.js");
 /* harmony import */ var react_ckeditor_component__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_ckeditor_component__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _categoryOption__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./categoryOption */ "./resources/js/admin/components/medicine/categoryOption.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -67556,6 +67620,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 // resources/assets/js/components/UserList.js
+
 
 
 
@@ -67613,6 +67678,13 @@ function (_Component) {
       })["catch"](function (error) {
         console.log(error);
       });
+      axios_index__WEBPACK_IMPORTED_MODULE_1___default.a.get(window.Laravel.baseUrl + '/api/category').then(function (response) {
+        if (response.data.status === 1) {
+          _this2.setState(response.data.data);
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   }, {
     key: "handleFieldChange",
@@ -67641,8 +67713,48 @@ function (_Component) {
       });
     }
   }, {
+    key: "makeCategoryList",
+    value: function makeCategoryList() {
+      if (this.state.category1 instanceof Array) {
+        return this.state.category1.map(function (object, i) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_categoryOption__WEBPACK_IMPORTED_MODULE_3__["default"], {
+            obj: object,
+            key: i,
+            index: i
+          });
+        });
+      }
+    }
+  }, {
+    key: "makeCategoryList2",
+    value: function makeCategoryList2() {
+      if (this.state.category2 instanceof Array) {
+        return this.state.category2.map(function (object, i) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_categoryOption__WEBPACK_IMPORTED_MODULE_3__["default"], {
+            obj: object,
+            key: i,
+            index: i
+          });
+        });
+      }
+    }
+  }, {
+    key: "makeCategoryList3",
+    value: function makeCategoryList3() {
+      if (this.state.category3 instanceof Array) {
+        return this.state.category3.map(function (object, i) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_categoryOption__WEBPACK_IMPORTED_MODULE_3__["default"], {
+            obj: object,
+            key: i,
+            index: i
+          });
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
+      console.log(this.state.category);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -67715,7 +67827,17 @@ function (_Component) {
         name: "price",
         defaultValue: this.state.price,
         onChange: this.handleFieldChange
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group col-xs-6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "exampleInputEmail1"
+      }, "Danh m\u1EE5c s\u1EA3n ph\u1EA9m"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "form-control",
+        name: "category",
+        id: "category",
+        value: this.state.category,
+        onChange: this.handleFieldChange
+      }, this.makeCategoryList(), this.makeCategoryList2(), this.makeCategoryList3()))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "box-footer text-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
@@ -67840,11 +67962,21 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        className: "content"
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card shadow mb-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header py-3 text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "m-0 font-weight-bold text-primary"
+      }, "Danh s\xE1ch thu\u1ED1c")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "table-responsive"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-        className: "table"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "S\u1ED1 th\u1EE9 t\u1EF1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "T\xEAn s\u1EA3n ph\u1EA9m"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Thumbnail"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Short content"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Ch\u1EC9nh s\u1EEDa"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "X\xF3a"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.fetchRows())));
+        className: "table table-bordered text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "STT"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "T\xEAn s\u1EA3n ph\u1EA9m"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Thumbnail"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Short content"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        colSpan: 2
+      }, "Action"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.fetchRows())))));
     }
   }]);
 
@@ -67946,6 +68078,64 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Row);
+
+/***/ }),
+
+/***/ "./resources/js/admin/components/medicine/categoryOption.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/admin/components/medicine/categoryOption.js ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var CategoryOption =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(CategoryOption, _Component);
+
+  function CategoryOption() {
+    _classCallCheck(this, CategoryOption);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(CategoryOption).apply(this, arguments));
+  }
+
+  _createClass(CategoryOption, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: this.props.obj.id
+      }, this.props.obj.name);
+    }
+  }]);
+
+  return CategoryOption;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (CategoryOption);
 
 /***/ }),
 
@@ -68510,11 +68700,21 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        className: "content"
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card shadow mb-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header py-3 text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "m-0 font-weight-bold text-primary"
+      }, "Danh s\xE1ch l\u1ECBch tr\xECnh")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "table-responsive"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-        className: "table"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "S\u1ED1 th\u1EE9 t\u1EF1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "T\xEAn l\u1ECBch tr\xECnh"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Thumbnail"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Short content"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Ch\u1EC9nh s\u1EEDa"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "X\xF3a"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.fetchRows())));
+        className: "table table-bordered text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "STT"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "T\xEAn l\u1ECBch tr\xECnh"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Thumbnail"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Short content"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        colSpan: 2
+      }, "Action"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.fetchRows())))));
     }
   }]);
 
@@ -68598,17 +68798,17 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.obj.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.obj.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.index + 1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.obj.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "img-thumbnail",
         src: this.props.obj.thumbnail,
         alt: this.props.obj.title
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.props.obj.short_content), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "btn btn-primary",
         to: '/admin/schedule/edit/' + this.props.obj.id
-      }, "Edit")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "S\u1EEDa")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-danger",
         onClick: this.handleDelete
-      }, "Delete")));
+      }, "X\xF3a")));
     }
   }]);
 

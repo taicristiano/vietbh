@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {NavLink} from 'react-router-dom'
+import {Link, NavLink} from 'react-router-dom'
 
 const schedulePath = '/admin/schedule';
+const scheduleAddPath = '/admin/schedule/add';
 const medicinePath = '/admin/medicine';
 const postPath = '/admin/article';
 const userPath = '/admin/user';
@@ -14,95 +15,59 @@ class Sidebar extends Component {
         return (pathActive.indexOf(path) !== -1) ? "active menu-open" : "";
     };
 
+    checkShow = (path) => {
+        let pathActive = window.location.pathname;
+        return (pathActive.indexOf(path) !== -1) ? "show" : "";
+    };
+
     checkActive = (path) => {
         let pathActive = window.location.pathname;
-        return (pathActive === path) ? 'active' : ''
+        return (pathActive == path) ? 'active' : ''
+    };
+
+    checkCollapsed = (path) => {
+        let pathActive = window.location.pathname;
+        return (pathActive.indexOf(path) !== -1) ? "" : "collapsed";
     };
 
     render() {
         return (
-            <aside className="main-sidebar">
-                <section className="sidebar">
-                    <ul className="sidebar-menu" data-widget="tree">
-                        <li className="header">MAIN NAVIGATION</li>
-                        {/* schedule sidebar*/}
-                        <li className={"treeview " + this.checkActiveParentMenu(schedulePath)}>
-                            <a href="#">
-                                <i className="fa fa-dashboard"/><span>Lịch trình</span>
-                                <span className="pull-right-container"><i className="fa fa-angle-left pull-right"/></span>
-                            </a>
-                            <ul className="treeview-menu">
-                                <li className={this.checkActive(schedulePath)}>
-                                    <NavLink className="active" to={schedulePath}>Danh sách</NavLink>
-                                </li>
-                                <li className={this.checkActive(schedulePath + "/add")}>
-                                    <NavLink to={schedulePath + "/add"}>Thêm mới</NavLink>
-                                </li>
-                            </ul>
-                        </li>
-                        {/* medicine sidebar*/}
-                        <li className={"treeview " + this.checkActiveParentMenu(medicinePath)}>
-                            <a href="#">
-                                <i className="fa fa-dashboard"/><span>Mĩ phẩm</span>
-                                <span className="pull-right-container"><i className="fa fa-angle-left pull-right"/></span>
-                            </a>
-                            <ul className="treeview-menu">
-                                <li className={this.checkActive(medicinePath)}>
-                                    <NavLink className="active" to={medicinePath}>Danh sách</NavLink>
-                                </li>
-                                <li className={this.checkActive(medicinePath + "/add")}>
-                                    <NavLink to={medicinePath + "/add"}>Thêm mới</NavLink>
-                                </li>
-                            </ul>
-                        </li>
-                        {/* post sidebar*/}
-                        <li className={"treeview " + this.checkActiveParentMenu(postPath)}>
-                            <a href="#">
-                                <i className="fa fa-dashboard"/><span>Bài đăng</span>
-                                <span className="pull-right-container"><i className="fa fa-angle-left pull-right"/></span>
-                            </a>
-                            <ul className="treeview-menu">
-                                <li className={this.checkActive(postPath)}>
-                                    <NavLink className="active" to={postPath}>Danh sách</NavLink>
-                                </li>
-                                <li className={this.checkActive(postPath + "/add")}>
-                                    <NavLink to={postPath + "/add"}>Thêm mới</NavLink>
-                                </li>
-                            </ul>
-                        </li>
-                        {/* user sidebar*/}
-                        <li className={"treeview " + this.checkActiveParentMenu(userPath)}>
-                            <a href="#">
-                                <i className="fa fa-dashboard"/><span>Người dùng</span>
-                                <span className="pull-right-container"><i className="fa fa-angle-left pull-right"/></span>
-                            </a>
-                            <ul className="treeview-menu">
-                                <li className={this.checkActive(userPath)}>
-                                    <NavLink className="active" to={userPath}>Danh sách</NavLink>
-                                </li>
-                                <li className={this.checkActive(userPath + "/add")}>
-                                    <NavLink to={userPath + "/add"}>Thêm mới</NavLink>
-                                </li>
-                            </ul>
-                        </li>
-                        {/* clinic sidebar*/}
-                        <li className={"treeview " + this.checkActiveParentMenu(clinicPath)}>
-                            <a href="#">
-                                <i className="fa fa-dashboard"/><span>Phòng khám</span>
-                                <span className="pull-right-container"><i className="fa fa-angle-left pull-right"/></span>
-                            </a>
-                            <ul className="treeview-menu">
-                                <li className={this.checkActive(clinicPath)}>
-                                    <NavLink className="active" to={clinicPath}>Danh sách</NavLink>
-                                </li>
-                                <li className={this.checkActive(clinicPath + "/add")}>
-                                    <NavLink to={clinicPath + "/add"}>Thêm mới</NavLink>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </section>
-            </aside>
+            <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+                <a className="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                    <div className="sidebar-brand-icon rotate-n-15">
+                        <i className="fas fa-laugh-wink"/>
+                    </div>
+                    <div className="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                </a>
+                <hr className="sidebar-divider my-0"/>
+                <li className="nav-item">
+                    <a className="nav-link" href="index.html">
+                        <i className="fas fa-fw fa-tachometer-alt"/>
+                        <span>Dashboard</span></a>
+                </li>
+                <hr className="sidebar-divider"/>
+                <div className="sidebar-heading">
+                    Interface
+                </div>
+                <li className={"nav-item " + this.checkActiveParentMenu(schedulePath)}>
+                    <a className={"nav-link " + this.checkCollapsed(schedulePath)} href="#" data-toggle="collapse" data-target="#collapseTwo"
+                       aria-expanded="true" aria-controls="collapseTwo">
+                        <i className="fas fa-fw fa-cog"/>
+                        <span>Lịch trình</span>
+                    </a>
+                    <div id="collapseTwo" className={"collapse " + this.checkShow(schedulePath)} aria-labelledby="headingTwo"
+                         data-parent="#accordionSidebar">
+                        <div className="bg-white py-2 collapse-inner rounded">
+                            <Link className={"collapse-item " + this.checkActive(schedulePath)} to={schedulePath}>Danh sách</Link>
+                            <Link className={"collapse-item "  + this.checkActive(schedulePath + '/add')} to={schedulePath + '/add'}>Thêm mới</Link>
+                        </div>
+                    </div>
+                </li>
+                <hr className="sidebar-divider d-none d-md-block"/>
+                <div className="text-center d-none d-md-inline">
+                    <button className="rounded-circle border-0" id="sidebarToggle"/>
+                </div>
+            </ul>
         );
     }
 }
